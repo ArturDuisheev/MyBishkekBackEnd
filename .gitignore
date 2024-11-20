@@ -1,0 +1,88 @@
+# Python
+*.py[cod]
+*$py.class
+
+# Django stuff:
+*.log
+*.pot
+*.pyc
+*.pyo
+*.pyd
+__pycache__/
+local_settings.py
+
+# Env files
+.env
+.venv/
+env/
+venv/
+ENV/
+env.bak/
+venv.bak/
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Database
+*.sqlite3
+
+# Static and media
+/staticfiles/
+/media/
+
+# Jupyter Notebook
+.ipynb_checkpoints
+
+# VSCode
+.vscode/
+
+# PyCharm
+.idea/
+
+# mypy
+.mypy_cache/
+
+# Coverage reports
+htmlcov/
+.tox/
+.coverage
+coverage.xml
+*.cover
+.hypothesis/
+
+# Testing results
+.junit.xml
+
+# Sphinx documentation
+docs/_build/
+
+# C extensions
+*.so
+
+# Installer logs
+pip-log.txt
+pip-delete-this-directory.txt
+
+# Unit test / coverage reports
+*.cover
+*.py,cover
+*.un~
+
+# Translations
+*.mo
+
+# CSV files
+*.csv
+
+# Executables
+*.exe
+*.dll
+*.so
+*.dylib
+
+# Cython debug symbols
+cython_debug/
+
+#other
+.src/
