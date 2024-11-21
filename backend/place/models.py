@@ -10,6 +10,13 @@ class Category(models.Model):
         return self.name
 
 
+class PlaceImage(models.Model):
+    image = models.ImageField(
+        _('Изображение'),
+        upload_to='places/images/'
+    )
+
+
 class Place(models.Model):
     name = models.CharField(_("Название"), max_length=255)
     avg_price = models.DecimalField(_("Средняя цена"), max_digits=10, decimal_places=2, default=0)
@@ -21,6 +28,10 @@ class Place(models.Model):
     whatsapp = models.CharField(_("WhatsApp"), max_length=50, blank=True)
     instagram = models.URLField(_("Instagram"), blank=True)
     address = models.TextField(_("Адрес"), blank=True)
+    images = models.ManyToManyField(
+        PlaceImage,
+        related_name="images"
+    )
     categories = models.ManyToManyField(Category, related_name="places")
     created_by = models.ForeignKey(User, on_delete=models.CASCADE, related_name="places")
 

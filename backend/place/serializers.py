@@ -1,5 +1,11 @@
 from rest_framework import serializers
-from .models import Place, Category
+from .models import Place, Category, PlaceImage
+
+
+class PlaceImageSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = PlaceImage
+        fields = '__all__'
 
 
 class CategorySerializer(serializers.ModelSerializer):
@@ -10,6 +16,7 @@ class CategorySerializer(serializers.ModelSerializer):
 
 class PlaceSerializer(serializers.ModelSerializer):
     categories = CategorySerializer(many=True, read_only=True)
+    place_images = PlaceImageSerializer(many=True, read_only=True)
     created_by = serializers.StringRelatedField(read_only=True)
 
     class Meta:
@@ -17,6 +24,6 @@ class PlaceSerializer(serializers.ModelSerializer):
         fields = [
             'id', 'name', 'avg_price', 'avg_rating',
             'coordinates_x', 'coordinates_y', 'description',
-            'phone', 'whatsapp', 'instagram', 'address',
+            'phone', 'whatsapp', 'instagram', 'address', 'place_images',
             'categories', 'created_by'
         ]

@@ -1,5 +1,10 @@
 from django.contrib import admin
-from .models import Place, Category
+from .models import Place, Category, PlaceImage
+
+
+@admin.register(PlaceImage)
+class PlaceImage(admin.ModelAdmin):
+    list_display = ('id', 'image')
 
 
 @admin.register(Category)
@@ -23,4 +28,5 @@ class PlaceAdmin(admin.ModelAdmin):
 
     def get_categories(self, obj):
         return ", ".join([category.name for category in obj.categories.all()])
+
     get_categories.short_description = "Категории"
