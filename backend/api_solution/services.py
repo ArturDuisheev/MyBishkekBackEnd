@@ -1,5 +1,5 @@
 import requests
-
+import socket
 
 class WeatherService:
     IP_API_URL = 'http://ip-api.com/json/'
@@ -10,9 +10,13 @@ class WeatherService:
     def get_coordinates_by_ip(ip=None):
         """
         Получить координаты (широту и долготу) по IP.
+        Если IP не передан, будет использован IP, определяемый через заголовок 'REMOTE_ADDR'.
         """
+        if ip is None:
+            raise ValueError("IP-адрес не был передан.")
+
         try:
-            response = requests.get(f"{WeatherService.IP_API_URL}{ip or ''}")
+            response = requests.get(f"{WeatherService.IP_API_URL}{ip}")
             if response.status_code == 200:
                 data = response.json()
                 if data["status"] == "success":

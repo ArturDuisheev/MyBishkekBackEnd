@@ -18,6 +18,7 @@ THIRTY_PARTY_APPS = [
 APPS = [
     'place',
     'api_solution',
+    'parking'
 ]
 
 INSTALLED_APPS = [
