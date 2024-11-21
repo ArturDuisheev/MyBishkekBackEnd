@@ -1,6 +1,6 @@
 CORS_ALLOWED_ORIGINS = [
     "http://localhost:3000",
-    "http://http://38.180.251.18",
+    "http://38.180.251.18",
 ]
 
 CORS_ALLOW_HEADERS = [
