@@ -6,7 +6,9 @@ DJOSER = {
     'ACTIVATION_URL': '#/activate/{uid}/{token}',
     'SEND_ACTIVATION_EMAIL': False,
     ''
-    'SERIALIZERS': {},
+    'SERIALIZERS': {
+        'user': 'core.helpers.djoser.api.serializers.ProfileSerializer'
+    },
 }
 
 REST_FRAMEWORK = {
