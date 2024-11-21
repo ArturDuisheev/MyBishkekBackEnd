@@ -11,7 +11,12 @@ THIRTY_PARTY_APPS = [
     'rest_framework_simplejwt',
     'djoser',
     'corsheaders',
+    'django_filters',
     'drf_yasg'
+]
+
+APPS = [
+    'place',
 ]
 
 INSTALLED_APPS = [
@@ -21,7 +26,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    *THIRTY_PARTY_APPS
+    *THIRTY_PARTY_APPS,
+    *APPS
 ]
 
 MIDDLEWARE = [
