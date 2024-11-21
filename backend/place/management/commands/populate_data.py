@@ -6,6 +6,7 @@ from ...models import Category, Place, PlaceImage
 
 fake = Faker()
 
+
 class Command(BaseCommand):
     help = "Populate the database with fake data"
 

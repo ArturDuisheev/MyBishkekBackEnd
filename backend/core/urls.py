@@ -6,6 +6,7 @@ from .swagger import urlpatterns as swagger_urls
 
 api_urlpatterns = [
     path('api/v1/', include('place.urls')),
+    path('api/v1/', include('api_solution.urls')),
     path('api/v1/', include(djoser_urls)),
     path('swagger/', include(swagger_urls)),
 ]
