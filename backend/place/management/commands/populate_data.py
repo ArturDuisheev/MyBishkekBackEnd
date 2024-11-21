@@ -34,6 +34,13 @@ class Command(BaseCommand):
 
         self.stdout.write(f"Created {len(users)} users.")
 
+        User.objects.create_superuser(
+            username='admin',
+            email='admin@admin.com',
+            password='admin'
+        )
+        self.stdout.write(f"Created superuser")
+
         # Create place images
         place_images = []
         for _ in range(20):
