@@ -10,6 +10,7 @@ THIRTY_PARTY_APPS = [
     'rest_framework',
     'rest_framework_simplejwt',
     'djoser',
+    'corsheaders',
     'drf_yasg'
 ]
 
@@ -26,6 +27,7 @@ INSTALLED_APPS = [
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
+    'corsheaders.middleware.CorsMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
@@ -54,6 +56,8 @@ TEMPLATES = [
 
 from .helpers.djoser.auth import *
 
+from .helpers.secure.cors import *
+
 WSGI_APPLICATION = 'core.wsgi.application'
 
 import os
@@ -68,6 +72,14 @@ DATABASES = {
         'PORT': os.environ.get('POSTGRES_PORT'),
     }
 }
+
+if DEBUG:
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.sqlite3',
+            'NAME': BASE_DIR / 'db.sqlite3',
+        }
+    }
 
 LANGUAGE_CODE = 'en-us'
 
