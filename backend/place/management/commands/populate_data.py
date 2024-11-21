@@ -1,8 +1,12 @@
+import os
 import random
 from faker import Faker
 from django.core.management.base import BaseCommand
+from django.core.files import File
 from django.contrib.auth.models import User
+from django.conf import settings
 from ...models import Category, Place, PlaceImage
+
 
 fake = Faker()
 
@@ -42,13 +46,17 @@ class Command(BaseCommand):
         )
         self.stdout.write(f"Created superuser")
 
+        image_file_path = os.path.join(os.path.dirname(__file__), '0001.jpg')
+
         # Create place images
         place_images = []
         for _ in range(20):
-            image = PlaceImage.objects.create(
-                image=fake.image_url()  # Use fake image URLs; replace with actual paths if required
-            )
-            place_images.append(image)
+            # Open the image file and create a PlaceImage instance
+            with open(image_file_path, 'rb') as f:
+                place_image = PlaceImage.objects.create(
+                    image=File(f, name='0001.jpg')
+                )
+                place_images.append(place_image)
 
         self.stdout.write(f"Created {len(place_images)} place images.")
 
