@@ -7,6 +7,21 @@ class WeatherService:
     API_KEY = "8ed6c0f2b978147e0b139b888ea46349"
 
     @staticmethod
+    def get_client_ip(request):
+        """
+        Получить IP-адрес пользователя из запроса.
+        Если сервер находится за прокси, будем использовать 'HTTP_X_FORWARDED_FOR'.
+        """
+        x_forwarded_for = request.META.get('HTTP_X_FORWARDED_FOR')
+        if x_forwarded_for:
+            ip = x_forwarded_for.split(',')[0]  # Первый IP в списке (если прокси)
+        else:
+            ip = request.META.get('REMOTE_ADDR')  # Обычный IP
+
+        return ip
+
+    staticmethod
+
     def get_coordinates_by_ip(ip=None):
         """
         Получить координаты (широту и долготу) по IP.
